@@ -1,3 +1,17 @@
+<?php
+// require_once('../config.php');
+
+// $sql = "SELECT * from tbl_users";
+// $result = mysqli_query($conn, $sql);
+
+require_once '../config.php';
+require_once '../config/functions.php';
+
+$result = display_users();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,11 +24,11 @@
 
 <body>
 
-
     <div class="flex h-screen">
+
         <aside class="bg-white-100 w-1/4 p-4">
             <div class=" mb-8 text-4xl font-semibold Poppins">
-                <a href="/Admin/dashboard">
+                <a href="AdminDashboard.php">
                     <img src="../../img/logo.png" alt="LOGO" />
                 </a>
             </div>
@@ -64,52 +78,89 @@
 
 
         </aside>
-        <main class="bg-gray-100 flex-1 pt-24">
 
-            <div class="flex items-center justify-center p-12">
 
-                <div class="mx-auto w-full max-w-[550px] bg-white">
-                    <form>
+        <main class="bg-gray-100 flex-1 p-4">
 
-                        <div class="mb-5 ">
-                            <label for="name" class="mb-3 block text-base font-medium text-[#07074D]">
-                                Department Name
-                            </label>
-                            <input type="text" name="name" id="name" placeholder="Full Name" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
-                        </div>
 
-                        <div class="mx-3 flex flex-wrap">
-                            <div class="w-full px-3 sm:w-1/2">
 
-                            </div>
-                        </div>
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Name
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Role
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Active
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Edit
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Delete
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class=" dark:border-gray-700">
+                        <?php
 
-                        <div class="mb-5 pt-3">
-                            <label class="mb-5 block text-base font-semibold text-[#07074D] sm:text-xl">
-                                Department ID
-                            </label>
-                            <div class="-mx-3 flex flex-wrap">
-                                <div class="w-full px-3 sm:w-1/2">
-                                    <div class="mb-5 ">
+                        while ($row = mysqli_fetch_assoc($result)) {
 
-                                        <input type="text" name="name" id="docId" placeholder="1001" disabled="true" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        ?>
 
-                        <div>
-                            <button class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-black outline-2">
-                                Add Department
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+                            <td class="text-center justify-center"><?php echo $row['name']; ?></td>
+                            <td class="text-center justify-center">
+                                <?php
+
+                                if ($row['roleID'] == 0) {
+                                    echo "<p> Admin </p>";
+                                } else if ($row['roleID'] == 1) {
+                                    echo "<p> Doctor </p>";
+                                } else {
+                                    echo "<p> Patient </p>";
+                                }
+
+                                ?></td>
+                            </td>
+                            <td class="text-center justify-center">
+                                <?php
+
+                                if ($row['isActive'] == 1) {
+                                    echo "<p> Active </p>";
+                                } else {
+                                    echo "<p> Inactive </p>";
+                                }
+
+                                ?></td>
+                            <td class="text-center justify-center"><a href="#" class="">
+                                    <button class=" bg-blue-400 hover:bg-blue-500 text-blue-700 font-semibold
+                                         hover:text-white py-2 px-4 border
+                                         border-blue-500 hover:border-transparent rounded">
+                                        Edit
+                                    </button></a></td>
+                            <td class="text-center justify-center"><a href="#" class="">
+                                    <button class=" bg-red-600 hover:bg-red-500 text-red-700 font-semibold
+                                         hover:text-red py-2 px-4 border
+                                         border-red-500 hover:border-transparent rounded">
+                                        Delete
+                                    </button></a></td>
+                    </tr>
+
+                <?php
+                        }
+                ?>
+
+                </tbody>
+            </table>
+
 
         </main>
-    </div>
 
+    </div>
 </body>
 
 </html>

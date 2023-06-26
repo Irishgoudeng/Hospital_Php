@@ -1,3 +1,31 @@
+<?php
+require 'config.php';
+if (!empty($_SESSION["id"])) {
+  header("Location: index.php");
+}
+if (isset($_POST["submit"])) {
+  $email = $_POST["email"];
+  $name = $_POST["name"];
+  $password = $_POST["password"];
+  $confirmpassword = $_POST["confirmpassword"];
+  $duplicate = mysqli_query($conn, "SELECT * FROM tbl_users WHERE name = '$name' OR email = '$email'");
+  if (mysqli_num_rows($duplicate) > 0) {
+    header("Location: register.php");
+    "<script> alert('Username or Email Has Already Taken'); </script>";
+  } else {
+    if ($password == $confirmpassword) {
+      $query = "INSERT INTO tbl_users VALUES('','$name','$email','$password')";
+      mysqli_query($conn, $query);
+      header("Location: login.php");
+      "<script> alert('Registration Successful'); </script>";
+    } else {
+      header("Location: register.php");
+      "<script> alert('Password Does Not Match'); </script>";
+    }
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,12 +81,11 @@
             <a href="#" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</a>
           </div>
 
-          <a href="home.php"><button type="submit" name="submit" class="w-full block bg-black hover:bg-gray-500 focus:bg-gray-400 text-white font-semibold rounded-lg
+          <a href="login.php"><button type="submit" name="submit" class="w-full block bg-black hover:bg-gray-500 focus:bg-gray-400 text-white font-semibold rounded-lg
                     px-4 py-3 mt-6">Register</button></a>
         </form>
 
         <hr class="my-6 border-gray-300 w-full">
-
 
 
         <p class="mt-8">Have an account? <a href="login.php" class="text-blue-500 hover:text-blue-700 font-semibold">Log in Here!</a></p>

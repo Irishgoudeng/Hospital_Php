@@ -1,3 +1,13 @@
+<?php
+require_once('../config.php');
+
+$sql = "SELECT * from tbl_users";
+$result = mysqli_query($conn, $sql);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +24,7 @@
 
         <aside class="bg-white-100 w-1/4 p-4">
             <div class=" mb-8 text-4xl font-semibold Poppins">
-                <a href="/Admin/dashboard">
+                <a href="AdminDashboard.php">
                     <img src="../../img/logo.png" alt="LOGO" />
                 </a>
             </div>
@@ -39,6 +49,15 @@
                                 <path d="M144 112V80a32 32 0 0132-32h160a32 32 0 0132 32v32M256 208v160M336 288H176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
                             </svg>
                             <span>DOCTORS</span>
+                        </a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="ManageUsers.php" class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512" height="25px" width="25px">
+                                <rect x="32" y="112" width="448" height="352" rx="48" ry="48" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" />
+                                <path d="M144 112V80a32 32 0 0132-32h160a32 32 0 0132 32v32M256 208v160M336 288H176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+                            </svg>
+                            <span>USERS</span>
                         </a>
                     </li>
                     <li class="mb-4">
@@ -77,34 +96,27 @@
                                                 <thead class="border-b font-medium dark:border-neutral-500">
                                                     <tr>
                                                         <th scope="col" class="px-6 py-4">#</th>
-                                                        <th scope="col" class="px-6 py-4">First</th>
-                                                        <th scope="col" class="px-6 py-4">Last</th>
+                                                        <th scope="col" class="px-6 py-4">Name</th>
                                                         <th scope="col" class="px-6 py-4">Department</th>
-                                                        <th scope="col" class="px-6 py-4">Handle</th>
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                                                        <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">Mark</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">Otto</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">@mdo</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">@mdo</td>
+                                                        <?php
+
+                                                        while ($row = mysqli_fetch_assoc($result)) {
+
+                                                        ?>
+                                                            <td><?php echo $row['id']; ?></td>
+                                                            <td><?php echo $row['name']; ?></td>
+                                                            <td><?php echo $row['id']; ?></td>
                                                     </tr>
-                                                    <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                                                        <td class="whitespace-nowrap px-6 py-4 font-medium">2</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">Jacob</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">Thornton</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">@fat</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">@mdo</td>
-                                                    </tr>
-                                                    <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                                                        <td class="whitespace-nowrap px-6 py-4 font-medium">3</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">Larry</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">Wild</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">@twitter</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">@mdo</td>
-                                                    </tr>
+
+                                                <?php
+                                                        }
+                                                ?>
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -113,20 +125,11 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="mx-2 grid grid-cols-2 gap-72 mt-3 ">
                         <h3 class="font-semibold">Total Doctors : <span>22</span> </h3>
-
-
                     </div>
                 </div>
-
-
-
-
-
-
-
-
 
                 <div class="mx-4 pb-2">
                     <h3 class="font-semibold">Current Hospital Departments</h3>
@@ -146,19 +149,19 @@
                                             <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
                                                 <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
                                                 <td class="whitespace-nowrap px-6 py-4">Mark</td>
-                                              
+
 
                                             </tr>
                                             <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
                                                 <td class="whitespace-nowrap px-6 py-4 font-medium">2</td>
                                                 <td class="whitespace-nowrap px-6 py-4">Jacob</td>
-                                           
+
 
                                             </tr>
                                             <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
                                                 <td class="whitespace-nowrap px-6 py-4 font-medium">3</td>
                                                 <td class="whitespace-nowrap px-6 py-4">Larry</td>
-                                              
+
 
                                             </tr>
                                         </tbody>
@@ -169,7 +172,7 @@
                     </div>
                 </div>
 
-               
+
 
             </div>
 

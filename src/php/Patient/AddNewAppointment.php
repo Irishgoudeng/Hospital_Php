@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,14 +22,14 @@
     <div class="flex h-screen">
         <aside class="bg-white-100 w-1/4 p-4">
             <div class=" mb-8 text-4xl font-semibold Poppins">
-                <a href="/Admin/dashboard">
+                <a href="/Patient/PatientDashboard.php">
                     <img src="../../img/logo.png" alt="LOGO" />
                 </a>
             </div>
             <nav>
                 <ul>
                     <li class="mb-4">
-                        <a class="flex items-center" href="AdminDashboard.php">
+                        <a class="flex items-center" href="PatientDashboard.php">
                             <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512" height="25px" width="25px">
                                 <rect x="48" y="48" width="176" height="176" rx="20" ry="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
                                 <rect x="288" y="48" width="176" height="176" rx="20" ry="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
@@ -29,6 +37,25 @@
                                 <rect x="288" y="288" width="176" height="176" rx="20" ry="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
                             </svg>
                             <span>DASHBOARD</span>
+                        </a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="PatientAppointments.php" class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512" height="25px" width="25px">
+                                <rect fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" x="48" y="80" width="416" height="384" rx="48" />
+                                <circle cx="296" cy="232" r="24" />
+                                <circle cx="376" cy="232" r="24" />
+                                <circle cx="296" cy="312" r="24" />
+                                <circle cx="376" cy="312" r="24" />
+                                <circle cx="136" cy="312" r="24" />
+                                <circle cx="216" cy="312" r="24" />
+                                <circle cx="136" cy="392" r="24" />
+                                <circle cx="216" cy="392" r="24" />
+                                <circle cx="296" cy="392" r="24" />
+                                <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" stroke-linecap="round" d="M128 48v32M384 48v32" />
+                                <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" d="M464 160H48" />
+                            </svg>
+                            <span>APPOINTMENTS</span>
                         </a>
                     </li>
 
@@ -39,15 +66,6 @@
                                 <path d="M144 112V80a32 32 0 0132-32h160a32 32 0 0132 32v32M256 208v160M336 288H176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
                             </svg>
                             <span>DOCTORS</span>
-                        </a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="ManageUsers.php" class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512" height="25px" width="25px">
-                                <rect x="32" y="112" width="448" height="352" rx="48" ry="48" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" />
-                                <path d="M144 112V80a32 32 0 0132-32h160a32 32 0 0132 32v32M256 208v160M336 288H176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
-                            </svg>
-                            <span>USERS</span>
                         </a>
                     </li>
                     <li class="mb-4">
@@ -70,8 +88,7 @@
 
                 <div class="mx-auto w-full max-w-[550px] bg-white">
                     <form>
-
-                        <div class="mb-5 ">
+                        <div class="mb-5">
                             <label for="name" class="mb-3 block text-base font-medium text-[#07074D]">
                                 Full Name
                             </label>
@@ -83,44 +100,72 @@
                             </label>
                             <input type="text" name="phone" id="phone" placeholder="Enter your phone number" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
-                        <div class="mb-5">
-                            <label for="email" class="mb-3 block text-base font-medium text-[#07074D]">
-                                Email Address
-                            </label>
-                            <input type="email" name="email" id="email" placeholder="Enter your email" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
-                        </div>
-                        <div class="mx-3 flex flex-wrap">
+
+                        <div class="-mx-3 flex flex-wrap">
                             <div class="w-full px-3 sm:w-1/2">
                                 <div class="mb-5">
-                                    <label for="birthday" class="mb-3 block text-base font-medium text-[#07074D]">
-                                        Birthday
+                                    <label for="date" class="mb-3 block text-base font-medium text-[#07074D]">
+                                        Date
                                     </label>
-                                    <input type="date" name="date" id="bday" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                                    <input type="date" name="date" id="date" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                                 </div>
                             </div>
                             <div class="w-full px-3 sm:w-1/2">
-
+                                <div class="mb-5">
+                                    <label for="time" class="mb-3 block text-base font-medium text-[#07074D]">
+                                        Time
+                                    </label>
+                                    <input type="time" name="time" id="time" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                                </div>
                             </div>
                         </div>
 
                         <div class="mb-5 pt-3">
                             <label class="mb-5 block text-base font-semibold text-[#07074D] sm:text-xl">
-                                Details
+                                Doctor Details
                             </label>
                             <div class="-mx-3 flex flex-wrap">
                                 <div class="w-full px-3 sm:w-1/2">
                                     <div class="mb-5">
-                                        <select id="department" data-te-select-filter="true" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md placeholder =" Department">
-                                            <option id="departmentvalue" value="1">Optometry</option>
+                                        <select data-te-select-init data-te-select-filter="true" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+                                            <option value="1">Department</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                            <option value="4">Four</option>
+                                            <option value="5">Five</option>
+                                            <option value="6">Six</option>
+                                            <option value="7">Seven</option>
+                                            <option value="8">Eight</option>
+                                            <option value="9">Nine</option>
+                                            <option value="10">Ten</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="w-full px-3 sm:w-1/2">
+                                    <div class="mb-5">
+                                        <select data-te-select-init data-te-select-filter="true" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+                                            <option value="1">Dr. Hulyo</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                            <option value="4">Four</option>
+                                            <option value="5">Five</option>
+                                            <option value="6">Six</option>
+                                            <option value="7">Seven</option>
+                                            <option value="8">Eight</option>
+                                            <option value="9">Nine</option>
+                                            <option value="10">Ten</option>
                                         </select>
                                     </div>
                                 </div>
 
-
                                 <div class="w-full px-3 sm:w-1/2">
-                                    <div class="mb-5 ">
-
-                                        <input type="text" name="name" id="docId" placeholder="1001" disabled="true" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                                    <div class="mb-5">
+                                        <input type="text" name="city" id="city" placeholder="Contact No." class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" disabled="true" />
+                                    </div>
+                                </div>
+                                <div class="w-full px-3 sm:w-1/2">
+                                    <div class="mb-5">
+                                        <input type="text" name="post-code" id="post-code" placeholder="Post Code" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" disabled="true" />
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +173,7 @@
 
                         <div>
                             <button class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-black outline-2">
-                                Add Doctor
+                                Book Appointment
                             </button>
                         </div>
                     </form>
