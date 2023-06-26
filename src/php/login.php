@@ -1,7 +1,9 @@
 <?php
+
+
 require 'config.php';
 if (!empty($_SESSION["id"])) {
-  header("Location: index.php");
+  header("Location: login.php");
 }
 if (isset($_POST["submit"])) {
   $email = $_POST["email"];
@@ -37,6 +39,9 @@ if (isset($_POST["submit"])) {
   }
 }
 ?>
+
+
+
 
 
 

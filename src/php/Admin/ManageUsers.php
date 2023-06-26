@@ -82,24 +82,25 @@ $result = display_users();
 
         <main class="bg-gray-100 flex-1 p-4">
 
+        <h1 class="text-5xl">USER MANAGEMENT</h1>
 
 
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class=" py-3">
                             Name
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class=" py-3">
                             Role
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class=" py-3">
                             Active
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class=" py-3">
                             Edit
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class=" py-3">
                             Delete
                         </th>
                     </tr>
@@ -112,8 +113,8 @@ $result = display_users();
 
                         ?>
 
-                            <td class="text-center justify-center"><?php echo $row['name']; ?></td>
-                            <td class="text-center justify-center">
+                            <td class=""><?php echo $row['name']; ?></td>
+                            <td class="">
                                 <?php
 
                                 if ($row['roleID'] == 0) {
@@ -126,7 +127,7 @@ $result = display_users();
 
                                 ?></td>
                             </td>
-                            <td class="text-center justify-center">
+                            <td class="">
                                 <?php
 
                                 if ($row['isActive'] == 1) {
@@ -135,14 +136,15 @@ $result = display_users();
                                     echo "<p> Inactive </p>";
                                 }
 
-                                ?></td>
-                            <td class="text-center justify-center"><a href="#" class="">
+                                ?>
+                            </td>
+                            <td class=""><a href="#" class="">
                                     <button class=" bg-blue-400 hover:bg-blue-500 text-blue-700 font-semibold
                                          hover:text-white py-2 px-4 border
                                          border-blue-500 hover:border-transparent rounded">
                                         Edit
                                     </button></a></td>
-                            <td class="text-center justify-center"><a href="#" class="">
+                            <td class=""><a href="#" class="">
                                     <button class=" bg-red-600 hover:bg-red-500 text-red-700 font-semibold
                                          hover:text-red py-2 px-4 border
                                          border-red-500 hover:border-transparent rounded">

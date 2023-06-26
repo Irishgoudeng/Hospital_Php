@@ -6,6 +6,18 @@ $result = mysqli_query($conn, $sql);
 
 ?>
 
+<?php
+
+// session_start();
+// if ($_SESSION['id']) {
+//     echo "";
+// } else {
+//     header("location:../login.php");
+// }
+
+?>
+
+
 
 
 <!DOCTYPE html>
@@ -86,8 +98,8 @@ $result = mysqli_query($conn, $sql);
                 <div class="grid grid-cols-2 gap-4 mb-4">
 
                     <div class="mx-2 gap-72 ">
-                        <h3 class="font-semibold">Doctors Available </h3>
-                        <div class="bg-white rounded-lg shadow-md p-4 justify-center w-3">
+                        <h3 class="font-semibold mb-5">Doctors Available </h3>
+                        <div class="bg-white rounded-lg shadow-md p-4 justify-center w-auto">
                             <div class="flex flex-col">
                                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                                     <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -95,9 +107,9 @@ $result = mysqli_query($conn, $sql);
                                             <table class="min-w-full text-left text-sm font-light">
                                                 <thead class="border-b font-medium dark:border-neutral-500">
                                                     <tr>
-                                                        <th scope="col" class="px-6 py-4">#</th>
-                                                        <th scope="col" class="px-6 py-4">Name</th>
-                                                        <th scope="col" class="px-6 py-4">Department</th>
+                                                       
+                                                        <th scope="col" class="py-4">Name</th>
+                                                        <th scope="col" class="py-4">Department</th>
 
                                                     </tr>
                                                 </thead>
@@ -108,7 +120,7 @@ $result = mysqli_query($conn, $sql);
                                                         while ($row = mysqli_fetch_assoc($result)) {
 
                                                         ?>
-                                                            <td><?php echo $row['id']; ?></td>
+                                                           
                                                             <td><?php echo $row['name']; ?></td>
                                                             <td><?php echo $row['id']; ?></td>
                                                     </tr>

@@ -6,6 +6,17 @@ $result = mysqli_query($conn, $sql);
 
 ?>
 
+<?php
+
+// session_start();
+// if ($_SESSION['id']) {
+//     echo "";
+// } else {
+//     header("location:../login.php");
+// }
+
+?>
+
 
 
 
@@ -20,23 +31,24 @@ $result = mysqli_query($conn, $sql);
 </head>
 
 <body>
+
     <div class="flex h-screen">
 
         <aside class="bg-white-100 w-1/4 p-4">
             <div class=" mb-8 text-4xl font-semibold Poppins">
-                <a href="/Admin/dashboard">
+                <a href="AdminDashboard.php">
                     <img src="../../img/logo.png" alt="LOGO" />
                 </a>
             </div>
             <nav>
                 <ul>
                     <li class="mb-4">
-                        <a class="flex items-center" href="AdminDashboard.php"">
-                            <svg xmlns=" http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512" height="25px" width="25px">
-                            <rect x="48" y="48" width="176" height="176" rx="20" ry="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
-                            <rect x="288" y="48" width="176" height="176" rx="20" ry="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
-                            <rect x="48" y="288" width="176" height="176" rx="20" ry="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
-                            <rect x="288" y="288" width="176" height="176" rx="20" ry="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+                        <a class="flex items-center" href="AdminDashboard.php">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512" height="25px" width="25px">
+                                <rect x="48" y="48" width="176" height="176" rx="20" ry="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+                                <rect x="288" y="48" width="176" height="176" rx="20" ry="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+                                <rect x="48" y="288" width="176" height="176" rx="20" ry="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+                                <rect x="288" y="288" width="176" height="176" rx="20" ry="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
                             </svg>
                             <span>DASHBOARD</span>
                         </a>
@@ -74,6 +86,8 @@ $result = mysqli_query($conn, $sql);
 
 
         </aside>
+
+
         <main class="bg-gray-100 flex-1 p-4">
 
             <div class="p-8 my-4">
@@ -83,107 +97,111 @@ $result = mysqli_query($conn, $sql);
             <div class="p-4">
                 <div class="grid grid-cols-2 gap-4 mb-4">
 
-                    <div class="mx-2 grid grid-cols-2 gap-72 ">
-                        <h3 class="font-semibold">Doctors Available</h3>
-                        <div class="bg-white rounded-lg shadow-md p-4 justify-center ">
-                            <div class="flex flex-col">
-                                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                    <div class="inline-block min-w-full py-2 ">
-                                        <div class="overflow-hidden">
-                                            <table class="min-w-full text-left text-sm font-light">
-
-                                                <th scope="col" class="px-6 py-4">ID</th>
-                                                <th scope="col" class="px-6 py-4">Department</th>
-
-                                                <tr>
-                                                    <!-- Table Population Code -->
-                                                    <?php
-                                                    if ($result->num_rows > 0) {
-                                                        while ($row = $result->fetch_assoc()) {
-                                                            echo "<tr><td>" . $row["id"] . "</td><td>" . $row["name"] . "</td><td>";
-                                                        }
-                                                        echo "</table>";
-                                                    } else {
-                                                        echo "0 result";
-                                                    }
-                                                    ?>
-                                                </tr>
-
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="AddNewDoctor.php"><button class="bg-white rounded-lg shadow-md p-1 justify-end items-end mt-6">+ Add New
+                    <div class="mx-2 gap-72 ">
+                        <h3 class="font-semibold">Doctors Available </h3>
+                        <a href="AddNewDoctor.php"><button class="bg-white rounded-lg shadow-md p-1 justify-end items-end my-6">+ Add New
                                 Doctor</button>
-                        </a>
-                    </div>
-                </div>
+                            <div class="bg-white rounded-lg shadow-md p-4 justify-center w-auto">
+                                <div class="flex flex-col">
+                                    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                        <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                                            <div class="overflow-hidden">
+                                                <table class="min-w-full text-left text-sm font-light">
+                                                    <thead class="border-b font-medium dark:border-neutral-500">
+                                                        <tr>
 
-                <div class="grid grid-cols-2 gap-4 mb-4">
+                                                            <th scope="col" class="py-4">Name</th>
+                                                            <th scope="col" class="py-4">Department</th>
 
-                    <div class="mx-2 grid grid-cols-2 gap-72 ">
-                        <h3 class="font-semibold">Current Hospital Departments</h3>
-                        <div class="bg-white rounded-lg shadow-md p-4 justify-center ">
-                            <div class="flex flex-col">
-                                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                                        <div class="overflow-hidden">
-                                            <table class="min-w-full text-left text-sm font-light">
-                                                <thead class="border-b font-medium dark:border-neutral-500">
-                                                    <tr>
-                                                        <th scope="col" class="px-6 py-4">#</th>
-                                                        <th scope="col" class="px-6 py-4">First</th>
-                                                        <th scope="col" class="px-6 py-4">Last</th>
-                                                        <th scope="col" class="px-6 py-4">Handle</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                                                        <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">Mark</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">Otto</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">@mdo</td>
-                                                    </tr>
-                                                    <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                                                        <td class="whitespace-nowrap px-6 py-4 font-medium">2</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">Jacob</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">Thornton</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">@fat</td>
-                                                    </tr>
-                                                    <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                                                        <td class="whitespace-nowrap px-6 py-4 font-medium">3</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">Larry</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">Wild</td>
-                                                        <td class="whitespace-nowrap px-6 py-4">@twitter</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
+                                                            <?php
+
+                                                            while ($row = mysqli_fetch_assoc($result)) {
+
+                                                            ?>
+
+                                                                <td><?php echo $row['name']; ?></td>
+                                                                <td><?php echo $row['id']; ?></td>
+                                                        </tr>
+
+                                                    <?php
+                                                            }
+                                                    ?>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
-                        <a href="AddNewDepartments.php"><button class="bg-white rounded-lg shadow-md p-1 justify-end items-end mt-6">+ Add New
-                                Department</button>
                     </div>
 
-                    </a>
+                    <div class="mx-2 grid grid-cols-2 gap-72 mt-3 ">
+                        <h3 class="font-semibold">Total Doctors : <span>22</span> </h3>
+                    </div>
+                </div>
+
+                <div class="mx-4 pb-2">
+                    <h3 class="font-semibold">Current Hospital Departments</h3>
+                    <a href="AddNewDepartments.php"><button class="bg-white rounded-lg shadow-md p-1 justify-end items-end my-6">+ Add New
+                            Department</button>
+                        <div class="flex flex-col">
+                            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                                    <div class="overflow-hidden">
+                                        <table class="min-w-full text-left text-sm font-light">
+                                            <thead class="border-b font-medium dark:border-neutral-500">
+                                                <tr>
+                                                    <th scope="col" class="px-6 py-4">ID</th>
+                                                    <th scope="col" class="px-6 py-4">Department</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
+                                                    <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
+                                                    <td class="whitespace-nowrap px-6 py-4">Mark</td>
+
+
+                                                </tr>
+                                                <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
+                                                    <td class="whitespace-nowrap px-6 py-4 font-medium">2</td>
+                                                    <td class="whitespace-nowrap px-6 py-4">Jacob</td>
+
+
+                                                </tr>
+                                                <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
+                                                    <td class="whitespace-nowrap px-6 py-4 font-medium">3</td>
+                                                    <td class="whitespace-nowrap px-6 py-4">Larry</td>
+
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
 
 
-                <div class="h-48 mb-4">
-
-
-
-                </div>
 
             </div>
 
         </main>
     </div>
+
+
+    </div>
+
+
+
+
+    </div>
+
 </body>
 
 </html>

@@ -64,7 +64,7 @@
 
 
         </aside>
-        <main class="bg-gray-100 flex-1 pt-24">
+        <main class="bg-white flex-1 pt-24">
 
             <div class="flex items-center justify-center p-12">
 
